@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Assets</class>
+ <widget class="QMainWindow" name="Assets">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>420</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Surfaces implicites — TinyMesh</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QGroupBox" name="Objects_groupBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>350</width>
+        <height>330</height>
+       </size>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QPushButton" name="boxMesh">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>101</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Affiche un maillage de boîte.</string>
+       </property>
+       <property name="text">
+        <string>Boîte maillée</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="resetcameraButton">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>81</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Replace la caméra sur la vue initiale.</string>
+       </property>
+       <property name="text">
+        <string>Caméra</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sphereImplicit">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>101</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Affiche une sphère polygonisée depuis un champ implicite.</string>
+       </property>
+       <property name="text">
+        <string>Sphère implicite</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="sdfShape">
+       <property name="geometry"><rect><x>20</x><y>90</y><width>205</width><height>25</height></rect></property>
+       <item><property name="text"><string>Sphère</string></property></item>
+       <item><property name="text"><string>Capsule</string></property></item>
+       <item><property name="text"><string>Tore</string></property></item>
+       <item><property name="text"><string>Boîte</string></property></item>
+       <item><property name="text"><string>Union (boîte + sphère)</string></property></item>
+       <item><property name="text"><string>Intersection</string></property></item>
+       <item><property name="text"><string>Mélange lisse</string></property></item>
+       <item><property name="text"><string>Union dure (deux sphères)</string></property></item>
+       <item><property name="text"><string>Érosion projetée (sphère)</string></property></item>
+       <item><property name="text"><string>Érosion incrémentale</string></property></item>
+       <item><property name="text"><string>Érosion par lot</string></property></item>
+      </widget>
+      <widget class="QSpinBox" name="sdfResolution">
+       <property name="geometry"><rect><x>235</x><y>90</y><width>80</width><height>25</height></rect></property>
+       <property name="toolTip"><string>Nombre de points de la grille par axe.</string></property>
+       <property name="minimum"><number>16</number></property>
+       <property name="maximum"><number>160</number></property>
+       <property name="value"><number>96</number></property>
+      </widget>
+      <widget class="QPushButton" name="generateSdf">
+       <property name="geometry"><rect><x>20</x><y>275</y><width>140</width><height>27</height></rect></property>
+       <property name="text"><string>Générer</string></property>
+      </widget>
+      <widget class="QPushButton" name="exportSdfPng">
+       <property name="geometry"><rect><x>170</x><y>275</y><width>145</width><height>27</height></rect></property>
+       <property name="text"><string>Exporter PNG</string></property>
+      </widget>
+      <widget class="QLabel" name="erosionCountLabel">
+       <property name="geometry"><rect><x>20</x><y>130</y><width>105</width><height>25</height></rect></property>
+       <property name="text"><string>Impacts</string></property>
+      </widget>
+      <widget class="QSpinBox" name="erosionCount">
+       <property name="geometry"><rect><x>125</x><y>130</y><width>80</width><height>25</height></rect></property>
+       <property name="minimum"><number>1</number></property>
+       <property name="maximum"><number>96</number></property>
+       <property name="value"><number>64</number></property>
+      </widget>
+      <widget class="QLabel" name="erosionRadiusLabel">
+       <property name="geometry"><rect><x>20</x><y>165</y><width>105</width><height>25</height></rect></property>
+       <property name="text"><string>Rayon brosse</string></property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="erosionRadius">
+       <property name="geometry"><rect><x>125</x><y>165</y><width>80</width><height>25</height></rect></property>
+       <property name="decimals"><number>2</number></property>
+       <property name="minimum"><double>0.020000000000000</double></property>
+       <property name="maximum"><double>0.400000000000000</double></property>
+       <property name="singleStep"><double>0.010000000000000</double></property>
+       <property name="value"><double>0.120000000000000</double></property>
+      </widget>
+      <widget class="QLabel" name="erosionDepthLabel">
+       <property name="geometry"><rect><x>20</x><y>200</y><width>105</width><height>25</height></rect></property>
+       <property name="text"><string>Profondeur</string></property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="erosionDepth">
+       <property name="geometry"><rect><x>125</x><y>200</y><width>80</width><height>25</height></rect></property>
+       <property name="decimals"><number>2</number></property>
+       <property name="minimum"><double>0.000000000000000</double></property>
+       <property name="maximum"><double>1.000000000000000</double></property>
+       <property name="singleStep"><double>0.050000000000000</double></property>
+       <property name="value"><double>0.550000000000000</double></property>
+      </widget>
+      <widget class="QLabel" name="erosionSeedLabel">
+       <property name="geometry"><rect><x>20</x><y>235</y><width>105</width><height>25</height></rect></property>
+       <property name="text"><string>Graine</string></property>
+      </widget>
+      <widget class="QSpinBox" name="erosionSeed">
+       <property name="geometry"><rect><x>125</x><y>235</y><width>80</width><height>25</height></rect></property>
+       <property name="minimum"><number>0</number></property>
+       <property name="maximum"><number>9999</number></property>
+       <property name="value"><number>0</number></property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget_GL" native="true"/>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="Parameters_groupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>450</width>
+        <height>141</height>
+       </size>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Statistiques</string>
+       </property>
+       <widget class="QLabel" name="sdfTimeLabel">
+        <property name="geometry"><rect><x>10</x><y>80</y><width>61</width><height>21</height></rect></property>
+        <property name="text"><string>Temps</string></property>
+       </widget>
+       <widget class="QLabel" name="sdfGenerationTime">
+        <property name="geometry"><rect><x>70</x><y>80</y><width>90</width><height>21</height></rect></property>
+        <property name="alignment"><set>Qt::AlignRight|Qt::AlignVCenter</set></property>
+        <property name="text"><string>—</string></property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>61</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Sommets</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>50</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>61</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Triangles</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>20</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_13">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>20</y>
+         <width>251</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Affichage</string>
+       </property>
+       <widget class="QRadioButton" name="radioShadingButton_1">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Normal</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="wireframe">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>20</y>
+          <width>81</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Filaire</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioShadingButton_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>50</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Couleur</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <action name="actionExit">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
+  </action>
+  <action name="actionNew_Scene">
+   <property name="text">
+    <string>Nouvelle scène</string>
+   </property>
+  </action>
+  <action name="actionExport_obj">
+   <property name="text">
+    <string>OBJ File (.obj)</string>
+   </property>
+  </action>
+  <action name="actionExport_ma">
+   <property name="text">
+    <string>Maya File (.ma)</string>
+   </property>
+  </action>
+  <action name="actionLoad_ma">
+   <property name="text">
+    <string>Charger</string>
+   </property>
+  </action>
+  <action name="actionGL">
+   <property name="text">
+    <string>GL</string>
+   </property>
+  </action>
+  <action name="actionVectorized">
+   <property name="text">
+    <string>Vectorized</string>
+   </property>
+  </action>
+  <action name="actionExport_svg">
+   <property name="text">
+    <string>SVG File (.svg)</string>
+   </property>
+  </action>
+  <action name="actionSphere_Tracing_png">
+   <property name="text">
+    <string>Sphere Tracing (.png)</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
