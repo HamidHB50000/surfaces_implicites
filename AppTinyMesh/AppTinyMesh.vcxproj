@@ -38,15 +38,19 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros">
+    <VcpkgEnabled>false</VcpkgEnabled>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\Out\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>Temp\$(Platform)\$(Configuration)\</IntDir>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
     <CodeAnalysisRuleSet>analysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\Out\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>Temp\$(Platform)\$(Configuration)\</IntDir>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -121,11 +125,11 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Include\qte.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR64)\bin\moc.exe Include\%(Filename)%(Extension) -o Source\moc_%(Filename).cpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">set "QTFRAMEWORK_BYPASS_LICENSE_CHECK=1" &amp;&amp; "$(QTDIR64)\bin\moc.exe" Include\%(Filename)%(Extension) -o Source\moc_%(Filename).cpp</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc'ing  Include\%(Filename)%(Extension)  into  Source\moc_%(Filename).cpp</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Source\moc_%(Filename).cpp</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR64)\bin\moc.exe</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR64)\bin\moc.exe Include\%(Filename)%(Extension) -o Source\moc_%(Filename).cpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">set "QTFRAMEWORK_BYPASS_LICENSE_CHECK=1" &amp;&amp; "$(QTDIR64)\bin\moc.exe" Include\%(Filename)%(Extension) -o Source\moc_%(Filename).cpp</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc'ing  Include\%(Filename)%(Extension)  into  Source\moc_%(Filename).cpp</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source\moc_%(Filename).cpp</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR64)\bin\moc.exe</AdditionalInputs>
@@ -134,11 +138,11 @@
   <ItemGroup>
     <CustomBuild Include="UI\interface.ui">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR64)\bin\uic.exe UI\%(Filename)%(Extension) -o Include\ui_%(Filename).h</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">set "QTFRAMEWORK_BYPASS_LICENSE_CHECK=1" &amp;&amp; "$(QTDIR64)\bin\uic.exe" UI\%(Filename)%(Extension) -o Include\ui_%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling  UI\%(Filename)%(Extension)  into  Include\ui_%(Filename).h</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Include\ui_%(Filename).h</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR64)\bin\uic.exe</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR64)\bin\uic.exe UI\%(Filename)%(Extension) -o Include\ui_%(Filename).h</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">set "QTFRAMEWORK_BYPASS_LICENSE_CHECK=1" &amp;&amp; "$(QTDIR64)\bin\uic.exe" UI\%(Filename)%(Extension) -o Include\ui_%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling  UI\%(Filename)%(Extension)  into  Include\ui_%(Filename).h</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Include\ui_%(Filename).h</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR64)\bin\uic.exe</AdditionalInputs>
@@ -147,11 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Include\realtime.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR64)\bin\moc.exe Include\%(Filename)%(Extension) -o Source\%(Filename)-moc.cpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">set "QTFRAMEWORK_BYPASS_LICENSE_CHECK=1" &amp;&amp; "$(QTDIR64)\bin\moc.exe" Include\%(Filename)%(Extension) -o Source\%(Filename)-moc.cpp</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc'ing  Include\%(Filename)%(Extension)  into  Source\%(Filename)-moc.cpp</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Source\%(Filename)-moc.cpp</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR64)\bin\moc.exe</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR64)\bin\moc.exe Include\%(Filename)%(Extension) -o Source\%(Filename)-moc.cpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">set "QTFRAMEWORK_BYPASS_LICENSE_CHECK=1" &amp;&amp; "$(QTDIR64)\bin\moc.exe" Include\%(Filename)%(Extension) -o Source\%(Filename)-moc.cpp</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source\%(Filename)-moc.cpp</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR64)\bin\moc.exe</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc'ing  Include\%(Filename)%(Extension)  into  Source\%(Filename)-moc.cpp</Message>
@@ -176,7 +180,21 @@
     <None Include="Shaders\mesh.glsl" />
     <None Include="Shaders\skybox.glsl" />
   </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <RuntimeQtDll Include="$(QTDIR64)\bin\Qt6Cored.dll;$(QTDIR64)\bin\Qt6Guid.dll;$(QTDIR64)\bin\Qt6Widgetsd.dll;$(QTDIR64)\bin\Qt6OpenGLd.dll;$(QTDIR64)\bin\Qt6OpenGLWidgetsd.dll;$(QTDIR64)\bin\Qt6PrintSupportd.dll" />
+    <RuntimeQtPlatform Include="$(QTDIR64)\plugins\platforms\qwindowsd.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <RuntimeQtDll Include="$(QTDIR64)\bin\Qt6Core.dll;$(QTDIR64)\bin\Qt6Gui.dll;$(QTDIR64)\bin\Qt6Widgets.dll;$(QTDIR64)\bin\Qt6OpenGL.dll;$(QTDIR64)\bin\Qt6OpenGLWidgets.dll;$(QTDIR64)\bin\Qt6PrintSupport.dll" />
+    <RuntimeQtPlatform Include="$(QTDIR64)\plugins\platforms\qwindows.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="DeployRuntimeDependencies" AfterTargets="Build" Condition="'$(Configuration)|$(Platform)'=='Debug|x64' Or '$(Configuration)|$(Platform)'=='Release|x64'">
+    <Copy SourceFiles="@(RuntimeQtDll)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="..\Libs\glew32.dll" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+    <MakeDir Directories="$(OutDir)platforms" />
+    <Copy SourceFiles="@(RuntimeQtPlatform)" DestinationFolder="$(OutDir)platforms" SkipUnchangedFiles="true" />
+  </Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
